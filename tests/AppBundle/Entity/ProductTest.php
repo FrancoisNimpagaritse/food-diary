@@ -23,6 +23,13 @@ class ProductTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(3.92, $product->computeTVA());
     }
 
+    public function testComputeTVAOtherProductNotSame()
+    {
+        $product = new Product('Un autre produit', 'Un autre type de produit', 20);
+
+        $this->assertNotSame(3.0, $product->computeTVA());
+    }
+
     public function testNegativePriceComputeTVA()
     {
         $product = new Product('Un produit', Product::FOOD_PRODUCT, -20);
